@@ -1,4 +1,4 @@
-ehterpad v2.2
+etherpad v2.2
 
 Requires:
 	elgg 2.0 http://elgg.org/download.php

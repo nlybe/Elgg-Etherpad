@@ -1,9 +1,9 @@
 etherpad v2.2
 
 Requires:
-	elgg 2.0 http://elgg.org/download.php
-	etherpad lite 1.2 http://etherpad.org/download/
-	upgrade to v2.2 was funded by Andre Bouchain 
+	elgg 2.0 http://elgg.org/download.php.
+	etherpad lite 1.2 http://etherpad.org/download/.
+	Upgrade to v2.2 was funded by Andre Bouchain .
 
 Install Etherpad Lite:
 	Follow INSTALL instructions.

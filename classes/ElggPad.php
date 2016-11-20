@@ -21,7 +21,7 @@ class ElggPad extends ElggObject {
     }
 
     function save() {
-        if (isIframeEnabled() && !empty($etherpad->iframe_url)) {
+        if (isIframeEnabled() && !empty($this->iframe_url)) {
             // do nothing   
             // the pad will use the link provided in iframe
         }

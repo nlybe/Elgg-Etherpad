@@ -113,6 +113,7 @@ if ($parent_guid && $parent_guid != $page_guid) {
 
 if ($page->save()) {
 
+    
     elgg_clear_sticky_form('page');
 
     // Now save description as an annotation

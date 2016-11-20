@@ -36,7 +36,7 @@ $english = array(
      * Status messages
      */
     'etherpad:saved' => "Your pad was successfully saved.",
-    'etherpad:error:notsaved' => "Your pad was successfully saved.",
+    'etherpad:error:notsaved' => "Error while saving pad.",
     'etherpad:delete:success' => "Your pad was successfully deleted.",
     'etherpad:delete:failure' => "Your pad could not be deleted. Please try again.",
     'etherpad:server:failure' => "Sorry, pads are not available right now.",
@@ -66,8 +66,12 @@ $english = array(
     'etherpad:newpadtext' => "New pad text:",
     'etherpad:pad:message' => 'New pad created successfully.',
     'etherpad:integrateinpages' => "Integrate pads and pages? (Requires Pages plugin to be enabled)",
+    'etherpad:settings:iframe' => 'Use External Pad',
     'etherpad:settings:enable_iframe' => 'Enable Pad with iframe',
     'etherpad:settings:enable_iframe:help' => 'If select yes, the user will be able to use an external pad by inserting the shared linked offered from Etherpad. See <a href="%s" target="_blank">this image</a> how to share a pad.',
+    'etherpad:settings:iframe_expire' => 'Pad Expires',
+    'etherpad:settings:iframe_expire:help' => 'If external pad expires after last edit, enter the number of expiration days e.g. 30',
+    
     
     /**
      * Widget
@@ -79,6 +83,12 @@ $english = array(
      * Sidebar items
      */
     'etherpad:newchild' => "Create a sub-pad",
+    
+    /**
+     * General
+     */
+    'etherpad:iframe:note' => "This pad will be DELETED %s days after the last edit! ",
+       
     
 );
 

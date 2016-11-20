@@ -74,6 +74,13 @@ if (elgg_in_context('widgets')) {
 
 if ($full) {
     if (isIframeEnabled() && !empty($etherpad->iframe_url)) {
+        $iframe_expire = elgg_get_plugin_setting('iframe_expire', 'etherpad');
+        if(is_numeric($iframe_expire) && $iframe_expire>0) {
+            $body .= elgg_format_element('p', [
+                'style' => "font-size: 90%; color: red;",
+                ], elgg_echo('etherpad:iframe:note', array($iframe_expire))
+            );
+        }
         $body .= elgg_format_element('iframe', [
             'name' => "embed_readwrite-head",
             'src' => "{$etherpad->iframe_url}?showControls=true&showChat=true&showLineNumbers=true&useMonospaceFont=false",

@@ -61,17 +61,6 @@ $options_yn = array(
 <?php echo elgg_view('input/text', array('name' => 'params[new_pad_text]', 'value' => $vars['entity']->new_pad_text, 'class' => 'text_input',)); ?>
 </div>
 
-<?php
-echo elgg_format_element('div', [], elgg_view_input('dropdown', array(
-    'name' => 'params[enable_iframe]',
-    'value' => ($plugin->enable_iframe?$plugin->enable_iframe:ETHERPAD_NO),
-    'options_values' => $options_yn,
-    'label' => elgg_echo('etherpad:settings:enable_iframe'),
-    'help' => elgg_echo('etherpad:settings:enable_iframe:help', array(elgg_get_simplecache_url('etherpad/images/iframe_sample.png'))),
-    'required' => false,
-)));
-?>
-
 <div>
     <br /><label><?php echo elgg_echo('etherpad:integrateinpages'); ?></label><br />
 <?php
@@ -137,3 +126,28 @@ echo elgg_view('input/dropdown', array(
     ));
     ?>
 </div>
+
+
+<?php
+$iframe_settings .= elgg_format_element('div', [], elgg_view_input('dropdown', array(
+    'name' => 'params[enable_iframe]',
+    'value' => ($plugin->enable_iframe?$plugin->enable_iframe:ETHERPAD_NO),
+    'options_values' => $options_yn,
+    'label' => elgg_echo('etherpad:settings:enable_iframe'),
+    'help' => elgg_echo('etherpad:settings:enable_iframe:help', array(elgg_get_simplecache_url('etherpad/images/iframe_sample.png'))),
+    'required' => false,
+)));
+
+$iframe_settings .= elgg_format_element('div', [], elgg_view_input('text', array(
+    'name' => 'params[iframe_expire]',
+    'value' => ($plugin->iframe_expire?$plugin->iframe_expire:0),
+    'label' => elgg_echo('etherpad:settings:iframe_expire'),
+    'help' => elgg_echo('etherpad:settings:iframe_expire:help'),
+    'required' => false,
+    'style' => 'width:50px;',
+)));
+
+$title = elgg_format_element('h3', [], elgg_echo('etherpad:settings:iframe'));
+echo elgg_view_module('inline', '', $iframe_settings, ['header' => $title]);
+
+?>

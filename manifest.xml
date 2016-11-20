@@ -2,26 +2,26 @@
 <plugin_manifest xmlns="http://www.elgg.org/plugin_manifest/1.8">
     <name>Etherpad Lite</name>
     <id>etherpad</id>
-	<author>Luke Williams and Lorea Developers / Modified by Nikos Lyberakis for Elgg 2.0</author>
-	<version>2.2</version>
-	<category>integrations</category>
-	<category>content</category>
-	<category>widget</category>
-	<description>Etherpad Lite integration.</description>
-	<website>https://lorea.org</website>
-	<license>GNU Affero General Public License version 3 or higher</license>
-	<requires>
-		<type>elgg_release</type>
-		<version>2.0</version>
-	</requires>
-	<suggests>
-		<type>plugin</type>
-		<name>pages</name>
-	</suggests>
+    <author>Luke Williams and Lorea Developers / Modified by Nikos Lyberakis for Elgg 2.0</author>
+    <version>2.3</version>
+    <category>integrations</category>
+    <category>content</category>
+    <category>widget</category>
+    <description>Etherpad Lite integration</description>
+    <website>https://github.com/nlybe</website>
+    <license>GNU Affero General Public License version 3 or higher</license>
     <requires>
-		<type>priority</type>
-		<priority>after</priority>
-		<plugin>pages</plugin>
-	</requires>
-	<activate_on_install>false</activate_on_install>
+        <type>elgg_release</type>
+        <version>2.0</version>
+    </requires>
+    <suggests>
+        <type>plugin</type>
+        <name>pages</name>
+    </suggests>
+    <requires>
+        <type>priority</type>
+        <priority>after</priority>
+        <plugin>pages</plugin>
+    </requires>
+    <activate_on_install>false</activate_on_install>
 </plugin_manifest>

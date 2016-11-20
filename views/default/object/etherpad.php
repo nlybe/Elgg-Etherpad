@@ -14,15 +14,15 @@ $etherpad = elgg_extract('entity', $vars, FALSE);
 $timeslider = elgg_extract('timeslider', $vars, FALSE);
 
 if (!$etherpad || !elgg_instanceof($etherpad, 'object', 'etherpad') && !elgg_instanceof($etherpad, 'object', 'subpad')) {
-	return TRUE;
+    return TRUE;
 }
 
 $etherpad = new ElggPad($etherpad->guid);
 
 // pages used to use Public for write access
 if ($etherpad->write_access_id == ACCESS_PUBLIC) {
-	// this works because this metadata is public
-	$etherpad->write_access_id = ACCESS_LOGGED_IN;
+    // this works because this metadata is public
+    $etherpad->write_access_id = ACCESS_LOGGED_IN;
 }
 
 $etherpad_icon = elgg_view('etherpad/icon', array('entity' => $etherpad, 'size' => 'small'));
@@ -31,9 +31,9 @@ $etherpad_icon = elgg_view('etherpad/icon', array('entity' => $etherpad, 'size' 
 $handler = elgg_get_plugin_setting('integrate_in_pages', 'etherpad') == 'yes' ? 'pages' : 'etherpad';
 $editor = get_entity($etherpad->owner_guid);
 $editor_link = elgg_view('output/url', array(
-	'href' => "$handler/owner/$editor->username",
-	'text' => $editor->name,
-	'is_trusted' => true,
+    'href' => "$handler/owner/$editor->username",
+    'text' => $editor->name,
+    'is_trusted' => true,
 ));
 
 $date = elgg_view_friendly_time($etherpad->time_created);
@@ -44,14 +44,14 @@ $tags = elgg_view('output/tags', array('tags' => $etherpad->tags));
 $comments_count = $etherpad->countComments();
 //only display if there are commments
 if ($comments_count != 0) {
-	$text = elgg_echo("comments") . " ($comments_count)";
-	$comments_link = elgg_view('output/url', array(
-		'href' => $etherpad->getURL() . '#page-comments',
-		'text' => $text,
-		'is_trusted' => true,
-	));
+    $text = elgg_echo("comments") . " ($comments_count)";
+    $comments_link = elgg_view('output/url', array(
+        'href' => $etherpad->getURL() . '#page-comments',
+        'text' => $text,
+        'is_trusted' => true,
+    ));
 } else {
-	$comments_link = '';
+    $comments_link = '';
 }
 
 if ($full) {
@@ -59,57 +59,67 @@ if ($full) {
 }
 
 $metadata = elgg_view_menu('entity', array(
-	'entity' => $vars['entity'],
-	'handler' => 'etherpad',
-	'sort_by' => 'priority',
-	'class' => 'elgg-menu-hz',
+    'entity' => $vars['entity'],
+    'handler' => 'etherpad',
+    'sort_by' => 'priority',
+    'class' => 'elgg-menu-hz',
 ));
 
 $subtitle = "$editor_text $comments_link";
 
 // do not show the metadata and controls in widget view
 if (elgg_in_context('widgets')) {
-	$metadata = '';
+    $metadata = '';
 }
 
 if ($full) {
-    if ($padPath = $etherpad->getPadPath($timeslider)) {
-        $body .= elgg_view('output/iframe', array('value' => $padPath, 'type' => "etherpad"));
-    } else {
-        forward('', 'etherpad/server_failure');
+    if (isIframeEnabled() && !empty($etherpad->iframe_url)) {
+        $body .= elgg_format_element('iframe', [
+            'name' => "embed_readwrite-head",
+            'src' => "{$etherpad->iframe_url}?showControls=true&showChat=true&showLineNumbers=true&useMonospaceFont=false",
+            'style' => "width: 100%; height: 500px;",
+            ], ''
+        );
+    }
+    else {
+        if ($padPath = $etherpad->getPadPath($timeslider)) {
+            $body .= elgg_view('output/iframe', array('value' => $padPath, 'type' => "etherpad"));
+        } else {
+            forward('', 'etherpad/server_failure');
+        }
     }
 
-	$params = array(
-		'entity' => $etherpad,
-		'metadata' => $metadata,
-		'subtitle' => $subtitle,
-		'tags' => $tags,
-	);
-	$params = $params + $vars;
-	$summary = elgg_view('object/elements/summary', $params);
+    $params = array(
+        'entity' => $etherpad,
+        'metadata' => $metadata,
+        'subtitle' => $subtitle,
+        'tags' => $tags,
+    );
+    $params = $params + $vars;
+    $summary = elgg_view('object/elements/summary', $params);
 
-	echo elgg_view('object/elements/full', array(
-		'entity' => $etherpad,
-		'title' => false,
-		'icon' => $etherpad_icon,
-		'summary' => $summary,
-		'body' => $body,
-	));
+    echo elgg_view('object/elements/full', array(
+        'entity' => $etherpad,
+        'title' => false,
+        'icon' => $etherpad_icon,
+        'summary' => $summary,
+        'body' => $body,
+    ));
 
 } else {
-	// brief view
+    // brief view
 
-	$excerpt = elgg_get_excerpt($etherpad->description);
+    $excerpt = elgg_get_excerpt($etherpad->description);
 
-	$params = array(
-		'entity' => $etherpad,
-		'metadata' => $metadata,
-		'subtitle' => $subtitle,
-		'tags' => $tags,
-		'content' => $excerpt,
-	);
-	$params = $params + $vars;
-	$list_body = elgg_view('object/elements/summary', $params);
+    $params = array(
+        'entity' => $etherpad,
+        'metadata' => $metadata,
+        'subtitle' => $subtitle,
+        'tags' => $tags,
+        'content' => $excerpt,
+    );
+    $params = $params + $vars;
+    $list_body = elgg_view('object/elements/summary', $params);
 
-	echo elgg_view_image_block($etherpad_icon, $list_body);
+    echo elgg_view_image_block($etherpad_icon, $list_body);
 }

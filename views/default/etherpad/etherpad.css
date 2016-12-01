@@ -1,0 +1,9 @@
+/**
+ * Elgg Etherpad lite plugin
+ * @package etherpad
+ */
+
+.elgg-form-etherpad-save .elgg-input-radios label {
+    font-weight: normal;
+    font-size: 100%;
+}

@@ -23,6 +23,7 @@ function pages_prepare_form_vars($page = null, $parent_guid = 0, $revision = nul
         'write_access_id' => ACCESS_DEFAULT,
         'tags' => '',
         'iframe_url' => '',
+        'iframe_or_link' => '',
         'container_guid' => elgg_get_page_owner_guid(),
         'guid' => null,
         'entity' => $page,

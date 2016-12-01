@@ -18,7 +18,16 @@ foreach ($variables as $name => $type) {
                 'label' => elgg_echo('etherpad:form:enable_iframe'),
                 'help' => elgg_echo('etherpad:form:enable_iframe:help', array(elgg_get_simplecache_url('etherpad/images/iframe_sample.png'))),
                 'required' => false,
-            )));    
+            )));  
+            
+            echo elgg_format_element('div', [], elgg_view_input('radio', array(
+                'name' => 'iframe_or_link',
+                'value' => $vars['iframe_or_link'],
+                'options' => array(elgg_echo('etherpad:external:iframe') => 'iframe', elgg_echo('etherpad:external:link') => 'link'),
+                'label' => elgg_echo('etherpad:form:iframe_or_link'),
+                'help' => elgg_echo('etherpad:form:iframe_or_link:help'),
+                'required' => false,
+            )));            
         }  
         
         continue;

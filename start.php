@@ -34,6 +34,9 @@ function etherpad_init() {
     // override pages library
     elgg_register_library('elgg:pages', elgg_get_plugins_path() . 'etherpad/lib/pages.php');
 
+    // register extra css
+    elgg_extend_view('elgg.css', 'etherpad/etherpad.css');
+    
     $page_integration = elgg_get_plugin_setting('integrate_in_pages', 'etherpad') != 'yes';
 
     if ($page_integration) {

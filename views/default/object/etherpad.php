@@ -81,12 +81,22 @@ if ($full) {
                 ], elgg_echo('etherpad:iframe:note', array($iframe_expire))
             );
         }
-        $body .= elgg_format_element('iframe', [
-            'name' => "embed_readwrite-head",
-            'src' => "{$etherpad->iframe_url}?showControls=true&showChat=true&showLineNumbers=true&useMonospaceFont=false",
-            'style' => "width: 100%; height: 500px;",
-            ], ''
-        );
+        //error_log($etherpad->iframe_or_link);
+        if ($etherpad->iframe_or_link == 'iframe') {
+            $body .= elgg_format_element('iframe', [
+                'name' => "embed_readwrite-head",
+                'src' => "{$etherpad->iframe_url}?showControls=true&showChat=true&showLineNumbers=true&useMonospaceFont=false",
+                'style' => "width: 100%; height: 500px;",
+                ], ''
+            );
+        }
+        else {
+            $body = elgg_view('output/url', array(
+                'href' => $etherpad->iframe_url,
+                'text' => elgg_echo('etherpad:external:link:open'),
+                'target' => '_blank',
+            ));
+        }
     }
     else {
         if ($padPath = $etherpad->getPadPath($timeslider)) {

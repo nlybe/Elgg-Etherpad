@@ -1,3 +1,6 @@
+# 2.4
+- Added option to open external pad with direct link
+
 # 2.3
 - Added: option to use an external pad by inserting the shared URL provided by this pad in iframe
 - Fixed: sticky form issue

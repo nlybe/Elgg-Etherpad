@@ -22,7 +22,8 @@ foreach ($variables as $name => $type) {
 }
 
 if (isIframeEnabled()) {
-    $iframe_url = get_input('iframe_url');    
+    $iframe_url = get_input('iframe_url');
+    $iframe_or_link = get_input('iframe_or_link');
 }
 
 // Get guids
@@ -84,7 +85,8 @@ if (sizeof($input) > 0) {
 $page->container_guid = $container_guid;
 
 if (isIframeEnabled()) {
-    $page->iframe_url = $iframe_url;    
+    $page->iframe_url = $iframe_url; 
+    $page->iframe_or_link = $iframe_or_link;
 }
 
 if ($parent_guid && $parent_guid != $page_guid) {

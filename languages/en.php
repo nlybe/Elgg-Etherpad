@@ -49,9 +49,14 @@ $english = array(
     'etherpad:tags' => "Tags",
     'etherpad:access_id' => "Read access",
     'etherpad:write_access_id' => "Write access",
-    'etherpad:form:enable_iframe' => "URL for iframe",
+    'etherpad:form:enable_iframe' => "External Pad URL",
     'etherpad:form:enable_iframe:help' => 'If want to use an external pad, use the shared URL provided by this pad. See <a href="%s" target="_blank">this image</a> how to share a pad.<br />Leave blank for creating a new pad.',
     'etherpad:error:invalid_url' => 'Invalid iframe URL',
+    'etherpad:external:iframe' => "In iframe",
+    'etherpad:external:link' => "Direct link",
+    'etherpad:form:iframe_or_link' => "How to use External Pad",
+    'etherpad:form:iframe_or_link:help' => 'Select how to access the external pad, if entered above.',
+    'etherpad:external:link:open' => "Open Pad",
     
     /**
      * Admin settings
@@ -67,7 +72,7 @@ $english = array(
     'etherpad:pad:message' => 'New pad created successfully.',
     'etherpad:integrateinpages' => "Integrate pads and pages? (Requires Pages plugin to be enabled)",
     'etherpad:settings:iframe' => 'Use External Pad',
-    'etherpad:settings:enable_iframe' => 'Enable Pad with iframe',
+    'etherpad:settings:enable_iframe' => 'Enable External Pad',
     'etherpad:settings:enable_iframe:help' => 'If select yes, the user will be able to use an external pad by inserting the shared linked offered from Etherpad. See <a href="%s" target="_blank">this image</a> how to share a pad.',
     'etherpad:settings:iframe_expire' => 'Pad Expires',
     'etherpad:settings:iframe_expire:help' => 'If external pad expires after last edit, enter the number of expiration days e.g. 30',

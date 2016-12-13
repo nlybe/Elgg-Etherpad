@@ -4,20 +4,7 @@
  * @package etherpad
  * 
  * @override mod/pages/start.php
- * 
- * nikos: http://www.emiprotechnologies.com/technical_notes/odoo-technical-notes-59/post/install-configure-and-setting-up-etherpad-server-for-odoo-253
- * 
-sudo su - etherpad -s /bin/bash 
-mkdir -p ~/local/etherpad
-cd ~/local/etherpad
-git clone git://github.com/ether/etherpad-lite.git
-
-cd etherpad-lite
-bin/run.sh
-* 
-to run:
-* sudo su - etherpad -s /bin/bash
-* ./bin/run.sh
+ *  
 */
  
 elgg_register_event_handler('init', 'system', 'etherpad_init');

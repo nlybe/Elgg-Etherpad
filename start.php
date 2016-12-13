@@ -147,8 +147,14 @@ function etherpad_page_handler($page, $handler) {
             include "$base_dir/view.php";
             break;
         case 'add':
-            $resource_vars['guid'] = elgg_extract(1, $page);
-            echo elgg_view_resource('etherpad/add', $resource_vars);
+            if ($handler == 'pages') {
+                set_input('guid', $page[1]);
+                include "$base_dir/new.php";
+            }
+            else {
+                $resource_vars['guid'] = elgg_extract(1, $page);
+                echo elgg_view_resource('etherpad/add', $resource_vars);
+            }
             break;
         case 'edit':
             set_input('guid', $page[1]);
